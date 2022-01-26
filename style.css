@@ -49,6 +49,10 @@ button {
     border: 1px solid black;
 }
 
+#weather:hover, #weather2:hover, #weather3:hover, #weather4:hover {
+    background-color: lightgray;
+}
+
 h3 {
     margin: 0;
 }
