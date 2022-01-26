@@ -1,0 +1,20 @@
+<?php
+
+$json = file_get_contents('php://input');
+$obj = json_decode($json);
+$connection = new PDO("mysql:host=localhost;dbname=mixedmessages", "root", "");
+
+if ($obj[0] != ('adjectives' || 'nouns' || 'verbs' || 'who')) {
+    echo json_encode("Wrong table name");
+} elseif ($obj[1] == '') {
+    echo json_encode("Don't send empty strings");
+} else {
+    $table = $obj[0];
+    try {
+        $preparedSql = $connection->prepare("INSERT INTO $table (col2) VALUES (:word)");
+        $preparedSql->execute([':word' => $obj[1]]);
+        echo json_encode("Entry successful");
+    } catch (Exception $e) {
+        if ($e->errorInfo[1] === 1062) echo json_encode("Duplicate entry");
+    }
+}
