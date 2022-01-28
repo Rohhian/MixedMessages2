@@ -17,8 +17,7 @@ async function sendNewWord(theTable, theWord) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(thePackage)
     });
-    const data = await response.json();
-    document.getElementById("errorMessage").innerHTML = data;
+    document.getElementById("errorMessage").innerHTML = await response.json();
     bringData();
 }
 
@@ -108,5 +107,5 @@ function getCardinalDirection(angle) {
 
 
 bringData();
-setInterval(bringCurrentWeather, 10000);
 setInterval(calcRandAndShow, 5000);
+setInterval(bringCurrentWeather, 10000);
