@@ -14,7 +14,7 @@ if ($obj[0] != ('adjectives' || 'nouns' || 'verbs' || 'who')) {
     try {
         $preparedSql = $connection->prepare("INSERT INTO $table (col2) VALUES (:word)");
         $preparedSql->execute([':word' => $sanitizedObj]);
-        echo json_encode("Entry successful");
+        echo json_encode("Entry successful. Added " . $sanitizedObj);
     } catch (Exception $e) {
         if ($e->errorInfo[1] === 1062) echo json_encode("Duplicate entry");
     }
