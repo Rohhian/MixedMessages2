@@ -11,6 +11,7 @@ let messageBox5 = document.getElementById('weather');
 
 
 async function sendNewWord(theTable, theWord) {
+
     let thePackage = [theTable, theWord];
     const response = await fetch('http://localhost/MixedMessages2/sendNewWord.php', {
         method: 'POST',
