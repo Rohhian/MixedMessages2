@@ -1,7 +1,5 @@
 <?php
 
-//header("Content-Type: application/json; charset=UTF-8");
-
 $connection = new PDO("mysql:host=localhost;dbname=mixedmessages", "root", "");
 $preparedSql = $connection->prepare("SELECT col2 FROM nouns ORDER BY id");
 $preparedSql->execute();

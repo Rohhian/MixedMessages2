@@ -31,7 +31,7 @@ function bringData() {
             fetch('http://localhost/MixedMessages2/getVerbs.php'),
             fetch('http://localhost/MixedMessages2/getWho.php'),
             fetch('http://localhost/MixedMessages2/getApiKey.php')]);
-        return await Promise.all(responses.map(result => result.json()));
+        return Promise.all(responses.map(result => result.json()));
     }
 
     loadData().then((data) => {
